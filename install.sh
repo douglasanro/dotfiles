@@ -1,63 +1,66 @@
-#!/bin/bash
-
-function msg_install { echo -e "\033[1m🔥 $1 \033[0m"; }
+function msg_running { echo -e "\033[1m🔥 $1 \033[0m"; }
 function msg_done { echo -e "\033[1m🚀 $1 \033[0m"; }
 
 DOTFILES="$HOME/Development/dotfiles"
 
 if [[ -d $DOTFILES ]]; then
-  print 'Checking dotfiles directory'
+  msg_running 'Checking dotfiles directory'
 else
-  print 'Cloning dotfiles'
+  msg_running 'Cloning dotfiles'
   git clone https://github.com/douglasanro/dotfiles.git $DOTFILES
 fi
 
 cd $DOTFILES
 
-msg_install "Symlinking Zsh"
+msg_running "Symlinking Zsh"
 ln -s $(pwd)/.zshrc ~/.zshrc
 
-msg_install "Installing Homebrew"
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if test ! $(which brew); then
+  msg "Installing Homebrew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  msg_running "Updating Homebrew"
+  brew update
+fi
 
-msg_install "Installing Chrome"
+msg_running "Installing Chrome"
 brew cask install google-chrome
 
-msg_install "Installing Firefox"
+msg_running "Installing Firefox"
 brew cask install firefox
 
-msg_install "Installing VS Code"
+msg_running "Installing VS Code"
 brew cask install visual-studio-code
 
-msg_install "Installing VLC"
+msg_running "Installing VLC"
 brew cask install vlc
 
-msg_install "Installing Docker"
+msg_running "Installing Docker"
 brew cask install docker
 
-msg_install "Installing NVM"
+msg_running "Installing NVM"
 brew install nvm
 
-msg_install "Installing Yarn"
+msg_running "Installing Yarn"
 brew install yarn
 
-msg_install "Installing Go"
+msg_running "Installing Go"
 brew install go
 
-msg_install "Installing AWS CLI"
+msg_running "Installing AWS CLI"
 brew install awscli
 
-msg_install "Making Zsh the default shell"
+msg_running "Making Zsh the default shell"
 chsh -s $(which zsh)
 
-msg_install "Installing Oh My Zsh"
+msg_running "Installing Oh My Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-msg_install "Installing SpaceShip ZSH"
+msg_running "Installing SpaceShip ZSH"
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
-msg_install "Creating git aliases"
+msg_running "Creating git aliases"
 git config --global alias.psh "push origin HEAD"
 git config --global alias.up "!git pull --rebase --prune $@ && git submodule update --init --recursive"
 git config --global alias.co "checkout"

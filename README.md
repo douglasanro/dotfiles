@@ -16,7 +16,7 @@
 ## Installation
 
 ```bash
-curl -SL https://raw.github.com/douglasanro/dotfiles/master/install.sh | bash
+curl -SL https://raw.github.com/douglasanro/dotfiles/master/install.sh | zsh
 ```
 
 ## Finishing touches

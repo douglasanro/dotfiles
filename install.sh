@@ -1,3 +1,5 @@
+#!/bin/sh
+
 function msg_running { echo -e "\033[1m🔥 $1 \033[0m"; }
 function msg_done { echo -e "\033[1m🚀 $1 \033[0m"; }
 
@@ -54,11 +56,11 @@ msg_running "Making Zsh the default shell"
 chsh -s $(which zsh)
 
 msg_running "Installing Oh My Zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 
 msg_running "Installing SpaceShip ZSH"
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH/custom/themes/spaceship-prompt"
+ln -s "$ZSH/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH/custom/themes/spaceship.zsh-theme"
 
 msg_running "Creating git aliases"
 git config --global alias.psh "push origin HEAD"

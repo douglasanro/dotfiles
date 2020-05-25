@@ -31,6 +31,9 @@ brew cask install google-chrome
 msg_running "Installing Firefox"
 brew cask install firefox
 
+msg_running "Installing Brave"
+brew cask install brave-browser
+
 msg_running "Installing VS Code"
 brew cask install visual-studio-code
 
@@ -39,6 +42,12 @@ brew cask install vlc
 
 msg_running "Installing Docker"
 brew cask install docker
+
+msg_running "Installing Tiles"
+brew cask install tiles
+
+msg_running "Installing MonitorControl"
+brew cask install monitorcontrol
 
 msg_running "Installing NVM"
 brew install nvm

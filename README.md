@@ -4,7 +4,7 @@
 
 ## Reminders
 
-- Check you have `XCode` or `dev tools`. It can be downloaded from the app store.
+- Check if you have `XCode` or `dev tools`. It can be downloaded from the app store.
 
 ## Before starting
 

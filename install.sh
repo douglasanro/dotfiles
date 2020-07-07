@@ -71,6 +71,12 @@ msg_running "Installing SpaceShip ZSH"
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH/custom/themes/spaceship-prompt"
 ln -s "$ZSH/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH/custom/themes/spaceship.zsh-theme"
 
+msg_running "Installing zsh-autosuggestions"
+brew install zsh-autosuggestions
+
+msg_running "Installing zsh-syntax-highlighting"
+brew install zsh-syntax-highlighting
+
 msg_running "Creating git aliases"
 git config --global alias.psh "push origin HEAD"
 git config --global alias.up "!git pull --rebase --prune $@ && git submodule update --init --recursive"

@@ -72,6 +72,8 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 

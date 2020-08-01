@@ -1,7 +1,7 @@
 #!/bin/sh
 
-function msg_running { echo -e "\033[1m🔥 $1 \033[0m"; }
-function msg_done { echo -e "\033[1m🚀 $1 \033[0m"; }
+function msg_running { echo "==> \033[1m🔥 $1 \033[0m"; }
+function msg_done { echo "==> \033[1m🚀 $1 \033[0m"; }
 
 DOTFILES="$HOME/Development/dotfiles"
 
@@ -61,6 +61,9 @@ brew install go
 msg_running "Installing AWS CLI"
 brew install awscli
 
+msg_running "Installing neofetch"
+brew install neofetch
+
 msg_running "Making Zsh the default shell"
 chsh -s $(which zsh)
 
@@ -77,6 +80,10 @@ brew install zsh-autosuggestions
 msg_running "Installing zsh-syntax-highlighting"
 brew install zsh-syntax-highlighting
 
+msg_running "Installing fzf"
+brew install fzf
+$(brew --prefix)/opt/fzf/install --all
+
 msg_running "Creating git aliases"
 git config --global alias.psh "push origin HEAD"
 git config --global alias.up "!git pull --rebase --prune $@ && git submodule update --init --recursive"
@@ -88,4 +95,5 @@ git config --global alias.wip "commit -am 'WIP'"
 git config --global alias.undo "reset HEAD~1 --mixed"
 git config --global alias.amend "commit -a --amend"
 
+neofetch
 msg_done "Done!"

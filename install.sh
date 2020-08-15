@@ -84,16 +84,5 @@ msg_running "Installing fzf"
 brew install fzf
 $(brew --prefix)/opt/fzf/install --all
 
-msg_running "Creating git aliases"
-git config --global alias.psh "push origin HEAD"
-git config --global alias.up "!git pull --rebase --prune $@ && git submodule update --init --recursive"
-git config --global alias.co "checkout"
-git config --global alias.cm "checkout master"
-git config --global alias.st "status"
-git config --global alias.save "!git add -A && git commit -m 'SAVEPOINT'"
-git config --global alias.wip "commit -am 'WIP'"
-git config --global alias.undo "reset HEAD~1 --mixed"
-git config --global alias.amend "commit -a --amend"
-
 neofetch
 msg_done "Done!"

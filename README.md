@@ -8,9 +8,10 @@
 
 ## Before starting
 
-- Install [Iterm2](https://www.iterm2.com/) and add [Dracula theme](https://draculatheme.com/iterm/)
-- Install [Fira Code](https://github.com/tonsky/FiraCode/releases/download/2/FiraCode_2.zip)
-- Install [Source Code Pro](https://github.com/adobe-fonts/source-code-pro/archive/variable-fonts.zip)
+- Install [Iterm2](https://www.iterm2.com/) and add [Nord theme](https://github.com/arcticicestudio/nord-iterm2)
+- Install Fonts:
+  - [Fira Code](https://github.com/tonsky/FiraCode/releases/download/2/FiraCode_2.zip)
+  - [Source Code Pro](https://github.com/adobe-fonts/source-code-pro/archive/variable-fonts.zip)
 
 ## Installation
 
@@ -20,4 +21,4 @@ curl -SL https://raw.github.com/douglasanro/dotfiles/master/install.sh | zsh
 
 ## Finishing touches
 
-- Install VS Code `Settings Sync` Extension and connect to github `VS Code Settings` gist
+- Turn on Visual Studio Code [Settings Sync](https://code.visualstudio.com/docs/editor/settings-sync) and overwrite local settings.

@@ -17,9 +17,9 @@ cd $DOTFILES
 msg_running "Symlinking Zsh"
 ln -s $(pwd)/.zshrc ~/.zshrc
 
-if test ! $(which brew); then
-  msg "Installing Homebrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if ! [ -x "$(command -v brew)" ]; then
+  msg_running "Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/main/install.sh)"
 else
   msg_running "Updating Homebrew"
   brew update

@@ -26,28 +26,28 @@ else
 fi
 
 msg_running "Installing Chrome"
-brew cask install google-chrome
+brew install --cask google-chrome
 
 msg_running "Installing Firefox"
-brew cask install firefox
+brew install --cask firefox
 
 msg_running "Installing Brave"
-brew cask install brave-browser
+brew install --cask brave-browser
 
 msg_running "Installing VS Code"
-brew cask install visual-studio-code
+brew install --cask visual-studio-code
 
 msg_running "Installing VLC"
-brew cask install vlc
+brew install --cask vlc
 
 msg_running "Installing Docker"
-brew cask install docker
+brew install --cask docker
 
 msg_running "Installing Tiles"
-brew cask install tiles
+brew install --cask tiles
 
 msg_running "Installing MonitorControl"
-brew cask install monitorcontrol
+brew install --cask monitorcontrol
 
 msg_running "Installing NVM"
 brew install nvm

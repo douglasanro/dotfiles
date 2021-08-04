@@ -3,7 +3,7 @@
 function msg_running { echo "==> \033[1m🔥 $1 \033[0m"; }
 function msg_done { echo "==> \033[1m🚀 $1 \033[0m"; }
 
-DOTFILES="$HOME/Development/dotfiles"
+DOTFILES="$HOME/development/dotfiles"
 
 if [[ -d $DOTFILES ]]; then
   msg_running 'Checking dotfiles directory'

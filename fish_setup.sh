@@ -2,6 +2,10 @@ function msg_running { echo "==> \033[1m🐟 $1 \033[0m"; }
 function msg_done { echo "==> \033[1m🌊 $1 \033[0m"; }
 
 function fish_setup {
+  msg_running "Making Fish the default shell"
+  echo $(which fish) | sudo tee -a /etc/shells
+  chsh -s $(which fish)
+  
   msg_running "Installing Starship Theme"
   brew install starship
   starship init fish | source

@@ -24,7 +24,7 @@ function main {
   fi
 
   msg_running "Copying configs"
-  cp -R $DOTFILES/.config $(pwd)/.config
+  cp -Rf $DOTFILES/.config/* $(pwd)/.config/
   cp $DOTFILES/itermProfile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles
 
   if ! [ -x "$(command -v brew)" ]; then
@@ -83,26 +83,6 @@ function main {
 
   msg_running "Installing neofetch"
   brew install neofetch
-  
-  msg_running "Making Fish the default shell"
-  echo $(which fish) | sudo tee -a /etc/shells
-  chsh -s $(which fish)
-
-  msg_running "Installing Oh My Fish"
-  curl -L https://get.oh-my.fish | fish
-
-  msg_running "Installing Starship Theme"
-  brew install starship
-  starship init fish | source
-
-  msg_running "Installing Fisher"
-  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-
-  msg_running "Installing Z"
-  fisher install jethrokuan/z
-
-  msg_running "Installing Bass"
-  fisher install edc/bass
 
   neofetch
   msg_done "Done!"

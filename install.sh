@@ -24,7 +24,7 @@ function main {
   fi
 
   msg_running "Copying configs"
-  cp -Rf $DOTFILES/.config/* $(pwd)/.config/
+  yes | cp -rf $DOTFILES/.zshrc $(pwd)/.zshrc
   cp $DOTFILES/itermProfile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles
 
   if ! [ -x "$(command -v brew)" ]; then
@@ -41,12 +41,6 @@ function main {
   msg_running "Installing Nerd Fonts"
   brew tap homebrew/cask-fonts
   brew install --cask font-hack-nerd-font
-
-  msg_running "Installing Fish"
-  brew install fish
-
-  msg_running "Installing Tmux"
-  brew install tmux
 
   msg_running "Installing Iterm2"
   brew install --cask iterm2
@@ -83,6 +77,26 @@ function main {
 
   msg_running "Installing neofetch"
   brew install neofetch
+
+msg_running "Making Zsh the default shell"
+chsh -s $(which zsh)
+
+msg_running "Installing Oh My Zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
+
+msg_running "Installing SpaceShip ZSH"
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH/custom/themes/spaceship-prompt"
+ln -s "$ZSH/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH/custom/themes/spaceship.zsh-theme"
+
+msg_running "Installing zsh-autosuggestions"
+brew install zsh-autosuggestions
+
+msg_running "Installing zsh-syntax-highlighting"
+brew install zsh-syntax-highlighting
+
+msg_running "Installing fzf"
+brew install fzf
+$(brew --prefix)/opt/fzf/install --all
 
   neofetch
   msg_done "Done!"

@@ -25,6 +25,8 @@ function main {
 
   msg_running "Copying configs"
   yes | cp -rf $DOTFILES/.zshrc $(pwd)/.zshrc
+  yes | cp -rf $DOTFILES/.p10k.zsh $(pwd)/.p10k.zsh
+  yes | cp -rf $DOTFILES/.config $(pwd)/.config
   cp $DOTFILES/itermProfile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles
 
   if ! [ -x "$(command -v brew)" ]; then
@@ -60,8 +62,8 @@ function main {
   msg_running "Installing Docker"
   brew install --cask docker
 
-  msg_running "Installing Tiles"
-  brew install --cask tiles
+  msg_running "Installing Raycast"
+  brew install --cask raycast
 
   msg_running "Installing Numi"
   brew install --cask numi
@@ -69,34 +71,32 @@ function main {
   msg_running "Installing NVM"
   brew install nvm
 
-  msg_running "Installing AWS CLI"
-  brew install awscli
+  msg_running "Installing Neovim"
+  brew install neovim
 
-  msg_running "Installing Exa"
-  brew install exa
+  msg_running "Installing Tmux"
+  brew install tmux
 
   msg_running "Installing neofetch"
   brew install neofetch
 
-msg_running "Making Zsh the default shell"
-chsh -s $(which zsh)
+  msg_running "Making Zsh the default shell"
+  chsh -s $(which zsh)
 
-msg_running "Installing Oh My Zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
+  msg_running "Installing Oh My Zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 
-msg_running "Installing SpaceShip ZSH"
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH/custom/themes/spaceship-prompt"
-ln -s "$ZSH/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH/custom/themes/spaceship.zsh-theme"
+  msg_running "Installing powerlevel10k ZSH"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-msg_running "Installing zsh-autosuggestions"
-brew install zsh-autosuggestions
+  msg_running "Installing zsh-autosuggestions"
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-msg_running "Installing zsh-syntax-highlighting"
-brew install zsh-syntax-highlighting
+  msg_running "Installing zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-msg_running "Installing fzf"
-brew install fzf
-$(brew --prefix)/opt/fzf/install --all
+  msg_running "Installing LunarVim"
+  LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 
   neofetch
   msg_done "Done!"

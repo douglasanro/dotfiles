@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DOTFILES="$HOME/development/dotfiles"
+DOTFILES="$HOME/Development/dotfiles"
 
 function msg_running { echo "==> \033[1m🔥 $1 \033[0m"; }
 function msg_done { echo "==> \033[1m🚀 $1 \033[0m"; }
@@ -24,13 +24,13 @@ function main {
   fi
 
   msg_running "Copying configs"
-  yes | cp -rf $DOTFILES/.zshrc $(pwd)/.zshrc
-  yes | cp -rf $DOTFILES/.p10k.zsh $(pwd)/.p10k.zsh
-  yes | cp -rf $DOTFILES/.config $(pwd)/.config
+  yes | cp -rf $DOTFILES/.zshrc $(HOME)/.zshrc
+  yes | cp -rf $DOTFILES/.p10k.zsh $(HOME)/.p10k.zsh
+  yes | cp -rf $DOTFILES/.config $(HOME)/.config
 
   if ! [ -x "$(command -v brew)" ]; then
     msg_running "Installing Homebrew"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
     msg_running "Updating Homebrew"
     brew update

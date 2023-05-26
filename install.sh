@@ -24,9 +24,9 @@ function main {
   fi
 
   msg_running "Copying configs"
-  yes | cp -rf $DOTFILES/.zshrc $(HOME)/.zshrc
-  yes | cp -rf $DOTFILES/.p10k.zsh $(HOME)/.p10k.zsh
-  yes | cp -rf $DOTFILES/.config $(HOME)/.config
+  yes | cp -rf $DOTFILES/.zshrc $HOME/.zshrc
+  yes | cp -rf $DOTFILES/.p10k.zsh $HOME/.p10k.zsh
+  yes | cp -rf $DOTFILES/.config $HOME/.config
 
   if ! [ -x "$(command -v brew)" ]; then
     msg_running "Installing Homebrew"

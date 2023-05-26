@@ -86,7 +86,7 @@ function main {
   msg_running "Installing Oh My Zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 
-  msg_running "Installing powerlevel10k ZSH"
+  msg_running "Installing powerlevel10k"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
   msg_running "Installing zsh-autosuggestions"
@@ -95,8 +95,10 @@ function main {
   msg_running "Installing zsh-syntax-highlighting"
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-  msg_running "Installing LunarVim"
-  LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+  if ! command -v lvim >/dev/null; then
+    msg_running "Installing LunarVim"
+    INTERACTIVE_MODE=0 LV_BRANCH='release-1.3/neovim-0.9' sh -c "$(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)"
+  fi
 
   neofetch
   msg_done "Done!"

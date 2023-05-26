@@ -27,7 +27,6 @@ function main {
   yes | cp -rf $DOTFILES/.zshrc $(pwd)/.zshrc
   yes | cp -rf $DOTFILES/.p10k.zsh $(pwd)/.p10k.zsh
   yes | cp -rf $DOTFILES/.config $(pwd)/.config
-  cp $DOTFILES/itermProfile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles
 
   if ! [ -x "$(command -v brew)" ]; then
     msg_running "Installing Homebrew"

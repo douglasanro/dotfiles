@@ -26,11 +26,13 @@ function main {
   msg_running "Copying configs"
   yes | cp -rf $DOTFILES/.zshrc $HOME/.zshrc
   yes | cp -rf $DOTFILES/.p10k.zsh $HOME/.p10k.zsh
-  yes | cp -rf $DOTFILES/.config $HOME/.config
 
   if ! [ -x "$(command -v brew)" ]; then
     msg_running "Installing Homebrew"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   echo >> /Users/douglas/.zprofile
+   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/douglas/.zprofile
+   eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     msg_running "Updating Homebrew"
     brew update
@@ -40,11 +42,12 @@ function main {
   touch ~/.hushlogin
 
   msg_running "Installing Nerd Fonts"
-  brew tap homebrew/cask-fonts
-  brew install --cask font-hack-nerd-font
+  brew install --cask font-hack
+  brew install --cask font-meslo-for-powerlevel10k
+  brew install --cask font-meslo-lg
 
-  msg_running "Installing Iterm2"
-  brew install --cask iterm2
+  msg_running "Installing Ghostty"
+  brew install --cask ghostty
 
   msg_running "Installing Chrome"
   brew install --cask google-chrome
@@ -52,8 +55,8 @@ function main {
   msg_running "Installing Firefox"
   brew install --cask firefox
 
-  msg_running "Installing Brave"
-  brew install --cask brave-browser
+  msg_running "Installing Arc"
+  brew install --cask arc
 
   msg_running "Installing VS Code"
   brew install --cask visual-studio-code
@@ -64,9 +67,6 @@ function main {
   msg_running "Installing Raycast"
   brew install --cask raycast
 
-  msg_running "Installing Numi"
-  brew install --cask numi
-
   msg_running "Installing NVM"
   brew install nvm
 
@@ -76,14 +76,14 @@ function main {
   msg_running "Installing Tmux"
   brew install tmux
 
-  msg_running "Installing neofetch"
-  brew install neofetch
+  msg_running "Installing fastfetch"
+  brew install fastfetch
 
   msg_running "Making Zsh the default shell"
   chsh -s $(which zsh)
 
   msg_running "Installing Oh My Zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   msg_running "Installing powerlevel10k"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -99,7 +99,7 @@ function main {
     INTERACTIVE_MODE=0 LV_BRANCH='release-1.3/neovim-0.9' sh -c "$(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)"
   fi
 
-  neofetch
+  fastfetch
   msg_done "Done!"
 }
 
